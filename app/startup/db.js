@@ -6,6 +6,7 @@ const dbUtils = require('../utils/dbUtils');
 
 const connection = new Sequelize(CONFIG.SQL.DB_NAME, CONFIG.SQL.USERNAME, CONFIG.SQL.PASSWORD, {
 	host: CONFIG.SQL.HOST,
+	port: CONFIG.SQL.DB_PORT,
 	dialect: "mysql",
 	logging: false,
 	dialectOptions: {

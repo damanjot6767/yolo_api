@@ -55,7 +55,8 @@ var defaults = {
         DB_NAME: process.env.DB_NAME || 'db_name',
         USERNAME: process.env.DB_USERNAME || 'db_username',
         PASSWORD: process.env.DB_PASSWORD || 'db_password',
-        HOST: process.env.DB_HOST || 'db_host'
+        HOST: process.env.DB_HOST || 'db_host',
+        DB_PORT: process.env.DB_PORT || 3306
     },
     domain: {
         PROTOCOL: process.env.DOMAIN_PROTOCOL || 'http',

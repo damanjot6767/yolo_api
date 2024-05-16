@@ -13,7 +13,7 @@ module.exports = function (connection) {
         },
         email: { type: Sequelize.DataTypes.STRING, unique: true, allowNull: false},
         image: { type: Sequelize.DataTypes.JSON, defaultValue: null },
-        name: { type: Sequelize.DataTypes.STRING, allowNull: false },
+        name: { type: Sequelize.DataTypes.STRING},
         role: { type: Sequelize.DataTypes.INTEGER, defaultValue: USER_ROLES.USER },
         password: {
             type: Sequelize.DataTypes.STRING,
