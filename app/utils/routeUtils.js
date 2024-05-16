@@ -51,7 +51,7 @@ routeUtils.route = async (app, routes = []) => {
 		};
 		app.route(route.path)[route.method.toLowerCase()](...middlewares, getHandlerMethod(route));
 	});
-	createSwaggerUIForRoutes(app, routes);
+	// createSwaggerUIForRoutes(app, routes);
 };
 
 /**
