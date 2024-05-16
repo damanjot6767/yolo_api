@@ -1,0 +1,207 @@
+'use strict';
+
+let CONSTANTS = {};
+
+CONSTANTS.SERVER = {
+    ONE: 1
+};
+
+CONSTANTS.AVAILABLE_AUTHS = {
+    'SUPER_ADMIN': 1,
+    'USER': 2,
+};
+
+CONSTANTS.USER_ROLES = {
+    'SUPER_ADMIN': 1,
+    'USER': 2
+}
+
+CONSTANTS.USER_STATUS = {
+    'Pending': 0,
+    'Approved': 1,
+    'Rejected': 2,
+    'Deleted': 3,
+};
+
+CONSTANTS.ROLE_TYPE = {
+    ADMIN: 0,
+    CUSTOMS: 1,
+    OPERATOR: 2,
+    "API CONSUMER": 3
+}
+
+CONSTANTS.ROLE_NATURE = {
+    SYSTEM: 0,
+    BUSINESS: 1
+}
+
+CONSTANTS.DECLARATION_STATUS = {
+    SUBMITTED: 0,
+    APPROVED: 1,
+    REJECTED: 2,
+    PENDING: 3,
+    "RE-SUBMITTED": 4
+}
+
+CONSTANTS.USER_PERMISSIONS = {
+    ADD: 1,
+    UPDATE: 2,
+    DELETE: 3,
+    VIEW: 4,
+    BLOCK: 5,
+    SENSITIVE_INFORMATION: 6
+};
+
+CONSTANTS.SALES_STATUSES = {
+    "Pending": 1,
+    "Completed": 2
+}
+
+CONSTANTS.CURRENCY = {
+    "INR": 1,
+    "USD": 2,
+    "EUR": 3
+}
+
+CONSTANTS.DOCUMENT_TYPES = {
+    LICENSE: 1,
+    PASSPORT: 2
+}
+
+// CONSTANTS.DOCUMENT_TYPES = {
+//     "License": 0,
+//     "Passport": 1
+// }
+
+CONSTANTS.PASSWORD_PATTER_REGEX = /^(?=.{6,})(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
+
+CONSTANTS.MESSAGES = require('./messages');
+
+CONSTANTS.SECURITY = {
+    JWT_SIGN_KEY: 'fasdkfjklandfkdsfjladsfodfafjalfadsfkads',
+    BCRYPT_SALT: 8,
+    // live
+    // CAPTCHA_SECRET_KEY: '6LeNBxMaAAAAABe5ASAKFVovKDLocBSlaXlCBsuK',
+    // local
+    CAPTCHA_SECRET_KEY: '6LepEc8ZAAAAABlOu0wdFLkEn025HYuHATFCpiMd',
+    JWT_EXPIRY_TIME: '2 days',
+    STATIC_TOKEN_FOR_AUTHORIZATION: '58dde3df315587b279edc3f5eeb98145'
+};
+
+CONSTANTS.ERROR_TYPES = {
+    DATA_NOT_FOUND: 'DATA_NOT_FOUND',
+    BAD_REQUEST: 'BAD_REQUEST',
+    ALREADY_EXISTS: 'ALREADY_EXISTS',
+    FORBIDDEN: 'FORBIDDEN',
+    INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR',
+    UNAUTHORIZED: 'UNAUTHORIZED',
+    SOCKET_ERROR: 'SOCKET_ERROR',
+    INVALID_MOVE: 'INVALID_MOVE',
+    SQL_EXCEPTION: 'SQL_EXCEPTION'
+};
+
+CONSTANTS.HTTP_REQUEST_STATUS_CODES = {
+    SUCCESS: 200,
+    BAD_REQUEST: 400,
+    UN_AUTHORIZED: 401,
+    INTERNAL_SERVER_ERROR: 500,
+    DATA_NOT_FOUND: 404
+};
+
+
+CONSTANTS.MAX_LIMITS_OF_USERS_FOR_SINGLE_ROOM = 4;
+
+CONSTANTS.AVAILABLE_EXTENSIONS_FOR_FILE_UPLOADS = ['csv', 'png'];
+
+CONSTANTS.PAGINATION = {
+    DEFAULT_LIMIT: 10,
+    DEFAULT_NUMBER_OF_DOCUMENTS_TO_SKIP: 0
+};
+
+CONSTANTS.TEMPLATES = require('./templates');
+
+CONSTANTS.PATH_TO_RESET_PASSWORD_TEMPLATE = '../public/templates/reset-password.html';
+CONSTANTS.PATH_TO_ACCOUNT_ACTIVATION_TEMPLATE = '../public/templates/email_verified.html';
+CONSTANTS.PATH_TO_ACCOUNT_ALREADY_ACTIVATED_TEMPLATE = '../public/templates/email_already_verified.html';
+CONSTANTS.PATH_TO_ACCOUNT_ALREADY_ACTIVATED_TEMPLATE_SPIRO = '../public/templates/email_already_verified_spiro.html';
+CONSTANTS.PATH_TO_ACCOUNT_ACTIVATION_TEMPLATE_SPIRO = '../public/templates/email_verified_spiro.html';
+
+CONSTANTS.GENDER = {
+    OTHER: 0,
+    MALE: 'Male',
+    FEMALE: "Female"
+};
+
+CONSTANTS.EMPLOYMENT_TYPE = {
+    EMPLOYEE: 'employee',
+    CONTRACTOR:'contractor'
+}
+
+CONSTANTS.ORDER = {
+    ASSENDING: "ASC",
+    DECENDING: "DESC"
+}
+
+CONSTANTS.PAYMENT_STATUS = {
+    PAID: 'paid',
+    UNPAID: 'unpaid'
+}
+
+CONSTANTS.TYPE = {
+    ACTIVE: "active",
+    HIDDEN: "hidden"
+}
+
+CONSTANTS.PACKAGE_TYPE = {
+    A:"A",
+    B:"B",
+    C:"C",
+    D:"D",
+    E:"E",
+    F:"F",
+    G:"G",
+    H:"H"
+}
+
+CONSTANTS.PACKAGE_CATEGORY = {
+    CATEGORY_1 : 1,
+    CATEGORY_2 : 2
+}
+
+CONSTANTS.EXPENSE_CATEGORY = {
+    "Petrol": "Petrol",
+    "NEW BATTERY": "NEW BATTERY",
+    "REGISTRATION": "REGISTRATION",
+    "BATTRY": "BATTRY",
+    "TYERS": "TYERS",
+    "ALARM": "ALARM",
+    "Salary": "Salary",
+    "BATTERY": "BATTERY",
+    "CAR CHARGER": "CAR CHARGER",
+    "CAR SEAT": "CAR SEAT",
+    "REPAIR": "REPAIR",
+    "VAN PAYMENT": "VAN PAYMENT",
+    "CHARGE BOOSTER": "CHARGE BOOSTER",
+    "SERVICE": "SERVICE",
+    "TYRES": "TYRES",
+    "MECHANIC": "MECHANIC",
+    "GREEN SLIP": "GREEN SLIP",
+    "COOLANT": "COOLANT",
+    "PUNCTURE REPAIR": "PUNCTURE REPAIR",
+    "CTP GREEN SLIP": "CTP GREEN SLIP",
+    "MT PRITCHARD PETROL": "MT PRITCHARD PETROL"
+}
+
+CONSTANTS.ROOM_BED_TYPE = {
+    SINGLE_BED:"Single Bed",
+    TWINS_BED:"Twins Bed",
+    KING_BED:"King Bed",
+    Double:"Double"
+}
+
+CONSTANTS.EVENT_TYPE = {
+    EVENT: 'EVENT',
+    FOOD: 'FOOD',
+    ROOM: 'ROOM'
+}
+module.exports = CONSTANTS;

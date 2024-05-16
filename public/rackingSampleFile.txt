@@ -1,0 +1,30 @@
+{
+    "office": "String",
+    "year": "String",
+    "serial": "String",
+    "number": "String",
+    "type": "doReceiveNewRacking",
+    "stock": {
+        "locationCode": "String",
+        "totalCustomsValue": "Number",
+        "receiptItems": [
+            {
+                "lineNumber": "Number",
+                "origin": "String",
+                "hsCode": "String",
+                "itemTotalCustomsValue": "Number",
+                "itemQuantity": "Number",
+                "itemTotalWeight": "Number",
+                "rackItems": [
+                    {
+                        "productID": "String",
+                        "description": "String",
+                        "qty": "Number",
+                        "weight": "Number",
+                        "customsValue": "Number"
+                    }
+                ]
+            }
+        ]
+    }
+}
