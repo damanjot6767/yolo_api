@@ -69,10 +69,10 @@ models.userModel.hasMany(models.postModel, { foreignKey: 'user_id' })
 models.postModel.belongsTo(models.userModel, { foreignKey: 'user_id' })
 
 //----------------------------------------------------roomReviewModel relation
-models.roomReviewModel.belongsTo(models.userModel, { foreignKey: 'user_id' })
+models.roomReviewModel.belongsTo(models.userModel, { as: 'user', foreignKey: 'user_id' })
 
 models.roomModel.hasMany(models.roomReviewModel, { foreignKey: 'room_id' })
-models.roomReviewModel.belongsTo(models.roomModel, { foreignKey: 'room_id' })
+models.roomReviewModel.belongsTo(models.roomModel, { as: 'room', foreignKey: 'room_id' })
 
 
 

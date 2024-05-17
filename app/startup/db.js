@@ -1,13 +1,12 @@
 'use strict';
 
 const { Sequelize } = require('sequelize');
-const mysql2 = require('mysql2');
 const CONFIG = require('../../config');
 const dbUtils = require('../utils/dbUtils');
+const mysql2 = require('mysql2');
 
 const connection = new Sequelize(CONFIG.SQL.DB_NAME, CONFIG.SQL.USERNAME, CONFIG.SQL.PASSWORD, {
 	host: CONFIG.SQL.HOST,
-	port: CONFIG.SQL.DB_PORT,
 	dialect: "mysql",
 	dialectModule: mysql2,
 	logging: false,

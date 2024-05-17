@@ -108,7 +108,6 @@ roomReviewService.getRoomReviews = async (payload) => {
         }
     ]
 
-    query['raw'] = true;
     query['distinct']= true
     return await roomReviewModel.findAndCountAll(query);
 };

@@ -21,7 +21,7 @@ module.exports = function (connection) {
         description: {
             type: Sequelize.DataTypes.TEXT,
             allowNull: false,
-        }
+        },
     }, {
         timestamps: true
     });

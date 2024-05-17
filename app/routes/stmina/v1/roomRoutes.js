@@ -160,8 +160,8 @@ let routes = [
 			query: {
 				title: Joi.string().optional(),
 				rating: Joi.number().optional(),
-				room_id: Joi.number().required(),
-				user_id: Joi.number().required(),
+				room_id: Joi.number().optional(),
+				user_id: Joi.number().optional(),
 				// common fields
 				page: Joi.number().min(1).optional().description('Page number starting with 1'),
 				pageSize: Joi.number().optional().default(10).description('page size'),

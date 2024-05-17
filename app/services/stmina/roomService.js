@@ -108,21 +108,20 @@ roomService.getRooms = async (payload) => {
         }
     ]
 
-    query['raw'] = true;
     query['distinct']= true
     const rooms = await roomModel.findAndCountAll(query);
     
-    const newRoomsWithServiceData = []
-    for(let i =0; i<rooms?.rows?.length; i++){
-        let object = rooms?.rows[i];
-        const services = await serviceModel.findAll({where: {id: object?.service_ids}})
-        object['service'] = services;
+    // Fetch associated services for each room
+    const roomsWithServicesPromises = rooms?.rows?.map(async (room) => {
+    const services = await serviceModel.findAll({ where: { id: room?.service_ids } });
+    return { ...room.toJSON(), services }; // Combine room data with services
+    });
 
-        newRoomsWithServiceData.push(object)
-    }
-
-    rooms.rows = newRoomsWithServiceData;
-    return rooms
+    // Wait for all promises to resolve
+    const roomsWithServices = await Promise.all(roomsWithServicesPromises);
+    
+    // Return the result
+    return { ...rooms, rows: roomsWithServices };
 };
 
 
