@@ -135,22 +135,17 @@ let getHandlerMethod = (route) => {
  * @param {*} routes Available routes.
  */
 let createSwaggerUIForRoutes = (app, routes = []) => {
-	const swaggerInfo = CONFIG.swagger.info;
-	const swJson = SERVICES.swaggerService;
-	swJson.swaggerDoc.createJsonDoc(swaggerInfo);
-	routes.forEach(route => {
-		swJson.swaggerDoc.addNewRoute(route.joiSchemaForSwagger, route.path, route.method.toLowerCase(), route.auth);
-	});
+	// const swaggerInfo = CONFIG.swagger.info;
+	// const swJson = SERVICES.swaggerService;
+	// swJson.swaggerDoc.createJsonDoc(swaggerInfo);
+	// routes.forEach(route => {
+	// 	swJson.swaggerDoc.addNewRoute(route.joiSchemaForSwagger, route.path, route.method.toLowerCase(), route.auth);
+	// });
 
 	const swaggerDocument = require('../../swagger.json');
 	let swagger_credential = {}
 	swagger_credential[`${process.env.DOCUMENTATION_USER}`] = process.env.DOCUMENTATION_PASSWORD
-	app.use('/documentation',
-		basicAuth({
-			users: swagger_credential,
-			challenge: true,
-		}),
-		swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+	app.use('/documentation',swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 };
 
 module.exports = routeUtils;
