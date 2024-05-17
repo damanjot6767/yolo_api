@@ -145,7 +145,11 @@ let createSwaggerUIForRoutes = (app, routes = []) => {
 	const swaggerDocument = require('../../swagger.json');
 	let swagger_credential = {}
 	swagger_credential[`${process.env.DOCUMENTATION_USER}`] = process.env.DOCUMENTATION_PASSWORD
-	app.use('/documentation',swaggerUI.serve, swaggerUI.setup(swaggerDocument, { customCssUrl: CSS_URL }));
+	app.use('/documentation',swaggerUI.serve, swaggerUI.setup(swaggerDocument, {
+		customCss:
+		  '.swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }',
+		customCssUrl: CSS_URL,
+	  }));
 };
 
 module.exports = routeUtils;
