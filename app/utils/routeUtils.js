@@ -141,11 +141,11 @@ let createSwaggerUIForRoutes = (app, routes = []) => {
 	// routes.forEach(route => {
 	// 	swJson.swaggerDoc.addNewRoute(route.joiSchemaForSwagger, route.path, route.method.toLowerCase(), route.auth);
 	// });
-
+	const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 	const swaggerDocument = require('../../swagger.json');
 	let swagger_credential = {}
 	swagger_credential[`${process.env.DOCUMENTATION_USER}`] = process.env.DOCUMENTATION_PASSWORD
-	app.use('/documentation',swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+	app.use('/documentation',swaggerUI.serve, swaggerUI.setup(swaggerDocument, { customCssUrl: CSS_URL }));
 };
 
 module.exports = routeUtils;
