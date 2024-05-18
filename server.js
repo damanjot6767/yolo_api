@@ -4,6 +4,7 @@
 /***********************************
  **** node module defined here *****
  ***********************************/
+const path = require('path');
 require('dotenv').config();
 const EXPRESS = require("express");
 const CONFIG = require('./config');
@@ -16,7 +17,7 @@ const app = EXPRESS();
  ***** Server Configuration *****
  ********************************/
 app.set('port', CONFIG.server.PORT);
-app.use('/public', EXPRESS.static('public'));
+app.use(EXPRESS.static(path.join(__dirname, 'public')));
 // configuration to setup socket.io on express server.
 const server = require('http').Server(app);
 // const io = require('socket.io')(server);
