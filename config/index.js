@@ -47,6 +47,11 @@ var defaults = {
         EMAIL_SENDER: process.env.EMAIL_SENDER || 'noreply@asthma.com',
         AMAZON_URI: process.env.AMAZON_URI || 'amazon-uri'
     },
+    CLOUDINARY: {
+        CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME, 
+        CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY, 
+        CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET 
+    },
     ENV_STAGING: "staging",
     ENV_DEVELOPMENT: "development",
     ENV_PRODUCTION: "production",

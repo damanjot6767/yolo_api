@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const CONFIG = require('../../../config');
 const fileUploadService = {};
@@ -23,6 +24,30 @@ fileUploadService.uploadFileToS3 = (payload, bucketName) => {
             resolve(data);
         });
     });
+};
+
+/**
+ * function to upload a file to s3(AWS) bucket.
+ */
+fileUploadService.uploadFileToCloudinary = (payload) => {
+
+    const base64Data = Buffer.from(payload?.buffer).toString('base64'); // Convert buffer to base64
+    // Configure Cloudinary with your credentials
+        cloudinary.config({
+            cloud_name: CONFIG.CLOUDINARY.CLOUDINARY_CLOUD_NAME, 
+            api_key: CONFIG.CLOUDINARY.CLOUDINARY_API_KEY, 
+            api_secret: CONFIG.CLOUDINARY.CLOUDINARY_API_SECRET 
+        });
+
+        return new Promise((resolve, reject) => {
+            cloudinary.uploader.upload('data:image/png;base64,' + base64Data, { public_id: payload?.originalname }, function(error, result) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
 };
 
 /**
@@ -75,5 +100,7 @@ fileUploadService.uploadFile = async (payload, pathToUpload) => {
 fileUploadService.deleteFile = async (filePath) => {
     return fs.unlinkSync(filePath);
 };
+
+
 
 module.exports = fileUploadService;

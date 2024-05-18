@@ -22,7 +22,7 @@ let routes = [
             model: 'FileUpload'
         },
         auth: [AVAILABLE_AUTHS.SUPER_ADMIN, AVAILABLE_AUTHS.PRIMARY_USER],
-        handler: fileUploadController.upload
+        handler: fileUploadController.uploadToCloudinary
     }
 ];
 

@@ -22,5 +22,16 @@ fileUploadController.upload = async (payload) => {
     { fileUrl: CONFIG.BASE_API_URL+CONFIG.PATH_TO_UPLOAD_FILES_ON_LOCAL+fileName });
 };
 
+fileUploadController.uploadToCloudinary = async (payload) => {
+    try {
+        const res = await SERVICES.fileUploadService.uploadFileToCloudinary(payload?.file)
+        return Object.assign(HELPERS.responseHelper.createSuccessResponse(MESSAGES.FILE_UPLOADED_SUCCESSFULLY), 
+        { fileUrl: res.secure_url});
+    }
+    catch(err){
+        console.log(err)
+    }
+};
+
 /* export fileUploadController */
 module.exports = fileUploadController;
