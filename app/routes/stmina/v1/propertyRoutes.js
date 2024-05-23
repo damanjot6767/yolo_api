@@ -53,7 +53,7 @@ let routes = [
 			payloadDocumentation: `## Request query will contains:\n **page:** page starts with 1 \n **pageSize:** page size \n **field:** column which needs to be order by \n **order:** ASC or DESC \n  ### if no query parameger available will return all the data, `,
 			model: 'getAllProperties'
 		},
-		auth: true,
+		auth: false,
 		handler: propertyController.getProperties
 	},
 	{
@@ -70,7 +70,7 @@ let routes = [
 			description: `Route to get a property.`,
 			model: 'get_property'
 		},
-		auth: true,
+		auth: false,
 		handler: propertyController.getProperty
 	},
 	{

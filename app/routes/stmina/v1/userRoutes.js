@@ -54,7 +54,7 @@ let routes = [
 			payloadDocumentation: `## Request query will contains:\n **page:** page starts with 1 \n **pageSize:** page size \n **field:** column which needs to be order by \n **order:** ASC or DESC \n  ### if no query parameger available will return all the data, `,
 			model: 'getAllUsers'
 		},
-		auth: true,
+		auth: false,
 		handler: adminController.getUsers
 	},
 	{
@@ -72,7 +72,7 @@ let routes = [
 			// payloadDocumentation: `## Request body will contains: \n \n **email:** email of the user \n **password:** password of the user \n **isMobile:** Is request is coming from mobile application or not? \n **deviceToken:** user's device token for push notifications \n **appType:** from which application user is requesting login \n`,
 			model: 'get_User'
 		},
-		auth: AVAILABLE_AUTHS.USER,
+		auth: false,
 		handler: userController.getUser
 	},
 	{

@@ -50,7 +50,7 @@ let routes = [
 			payloadDocumentation: `## Request query will contains:\n **page:** page starts with 1 \n **pageSize:** page size \n **field:** column which needs to be order by \n **order:** ASC or DESC \n  ### if no query parameger available will return all the data, `,
 			model: 'getAllServices'
 		},
-		auth: true,
+		auth: false,
 		handler: servicesController.getServices
 	},
 	{
@@ -67,7 +67,7 @@ let routes = [
 			description: `Route to get a services.`,
 			model: 'get_service'
 		},
-		auth: true,
+		auth: false,
 		handler: servicesController.getService
 	},
 	{

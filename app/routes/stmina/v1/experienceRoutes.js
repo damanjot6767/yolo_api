@@ -49,7 +49,7 @@ let routes = [
 			payloadDocumentation: `## Request query will contains:\n **page:** page starts with 1 \n **pageSize:** page size \n **field:** column which needs to be order by \n **order:** ASC or DESC \n  ### if no query parameger available will return all the data, `,
 			model: 'getAllExperiences'
 		},
-		auth: true,
+		auth: false,
 		handler: experienceController.getExperiences
 	},
 	{
@@ -66,7 +66,7 @@ let routes = [
 			description: `Route to get a experience.`,
 			model: 'get_experience'
 		},
-		auth: true,
+		auth: false,
 		handler: experienceController.getExperience
 	},
 	{
