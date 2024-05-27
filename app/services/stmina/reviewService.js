@@ -1,6 +1,7 @@
 
 const { 
-    reviewModel
+    reviewModel,
+    userModel
 } = require(`../../models`);
 const { Sequelize, Op } = require('sequelize');
 const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
@@ -85,7 +86,13 @@ reviewService.getReviews = async (payload) => {
         query['offset'] = offset;
         query['limit'] = limit
     }
-    
+    query['include'] = [
+        {
+            model: userModel,
+            as: 'user'
+        }
+    ]
+
     query['distinct']= true
     return await reviewModel.findAndCountAll(query);
 };
