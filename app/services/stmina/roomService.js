@@ -40,7 +40,7 @@ roomService.getRoom = async (criteria) => {
 
     if(room){
         const services = await serviceModel.findAll({where: {id: room?.service_ids}})
-        room['services'] = services;
+        return { ...room.toJSON(), services };
     }
 
     return room
