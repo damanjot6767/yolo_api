@@ -20,6 +20,7 @@ const connection = new Sequelize(CONFIG.SQL.DB_NAME, CONFIG.SQL.USERNAME, CONFIG
  * requiring models
  */
 let models = {
+	home: require("../models/stmina/homeModal")(connection),
 	user: require("../models/stmina/userModel")(connection),
 	about: require("../models/stmina/aboutModal")(connection),
 	room: require("../models/stmina/roomModal")(connection),

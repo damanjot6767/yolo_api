@@ -8,6 +8,7 @@ module.exports = {
     fileUploadService: require(`./stmina/fileUploadService`),
     adminService: require('./stmina/adminService'),
     userService: require('./stmina/userService'),
+    homeService: require('./stmina/homeService'),
     aboutService: require('./stmina/aboutService'),
     experienceService: require('./stmina/experienceService'),
     servicesService: require('./stmina/servicesService'),
