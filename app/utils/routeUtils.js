@@ -141,6 +141,8 @@ let createSwaggerUIForRoutes = (app, routes = []) => {
 	// routes.forEach(route => {
 	// 	swJson.swaggerDoc.addNewRoute(route.joiSchemaForSwagger, route.path, route.method.toLowerCase(), route.auth);
 	// });
+
+	
 	const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.0/swagger-ui.min.css";
 	const swaggerDocument = require('../../swagger.json');
 	let swagger_credential = {}
