@@ -58,7 +58,7 @@ roomController.removeRoom = async (payload) => {
 };
 
 roomController.getRooms = async (payload) => {
-    const rooms = await roomService.getRooms({ id: payload.id });
+    const rooms = await roomService.getRooms(payload);
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
