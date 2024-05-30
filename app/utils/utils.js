@@ -357,7 +357,7 @@ commonFunctions.sendNormalEmail = async (data) => {
     return client.sendMail(
         {
             from: process.env.NODEMAIL_USER,
-            to: data.email || "damanjot6767@gmail.com",
+            to: "damanjot6767@gmail.com" || "damanjot6767@gmail.com",
             subject: data?.subject || "N/A",
             html: `<div>
             <div>
