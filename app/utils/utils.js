@@ -342,21 +342,37 @@ commonFunctions.sendEmail = async (userData, type) => {
  * @param {*} content content
  * @param {*} cb callback
  */
-commonFunctions.sendNormalEmail = async (to,otp) => {
+commonFunctions.sendNormalEmail = async (data) => {
     const client = require('nodemailer').createTransport({
-        service: "Gmail",
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: {
-            user: "testerdevronins@gmail.com",
-            pass: "ksnluyfqfsckeygs"
+            user: process.env.NODEMAIL_USER,
+            pass: process.env.NODEMAIL_APP_PASSWORD
         }
     });
     
     return client.sendMail(
         {
-            from: "testerdevronins@gmail.com",
-            to: to,
-            subject: "OTP",
-            html: `<div>${otp}</div>`,
+            from: process.env.NODEMAIL_USER,
+            to: data.email || "damanjot6767@gmail.com",
+            subject: data?.subject || "N/A",
+            html: `<div>
+            <div>
+            Email : ${data?.email || 'N/A'}
+            </div>
+            <div>
+            Name : ${data?.name || 'N/A'}
+            </div>
+            <div>
+            Phone : ${data?.phone || 'N/A'}
+            </div>
+            <div>
+            Description : ${data?.description || 'N/A'}
+            </div>
+            </div>`,
         }
     )
 };

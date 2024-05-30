@@ -7,6 +7,7 @@ const CONFIG = require('../../config');
 module.exports = {
     fileUploadController: require(`./stmina/fileUploadController`),
     adminController: require('./stmina/adminController'),
+    sentMailController: require('./stmina/sentMailController'),
     homeController: require('./stmina/homeController'),
     userController: require('./stmina/userController'),
     aboutController: require('./stmina/aboutController'),
