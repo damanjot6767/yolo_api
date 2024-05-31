@@ -6,6 +6,7 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
+const CONSTANTS = require('../../utils/constants');
 
 let propertyService = {};
 
@@ -29,7 +30,10 @@ propertyService.createProperty = async (payload) => {
  * @returns 
  */
 propertyService.getProperty = async (criteria) => {
-    return await propertyModel.findOne({ where: criteria })
+    const property = await propertyModel.findOne({ where: criteria })
+
+    if(!property) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    return property
 };
 
 /**

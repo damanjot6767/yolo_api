@@ -8,6 +8,7 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
+const CONSTANTS = require('../../utils/constants');
 
 let reviewService = {};
 
@@ -31,7 +32,10 @@ reviewService.createReview = async (payload) => {
  * @returns 
  */
 reviewService.getReview = async (criteria) => {
-    return await reviewModel.findOne({ where: criteria })
+    const review = await reviewModel.findOne({ where: criteria })
+
+    if(!review) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    return review
 };
 
 /**

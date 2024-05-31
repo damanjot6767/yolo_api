@@ -6,6 +6,7 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
+const CONSTANTS = require('../../utils/constants');
 
 let eventService = {};
 
@@ -29,7 +30,10 @@ eventService.createEvent = async (payload) => {
  * @returns 
  */
 eventService.getEvent = async (criteria) => {
-    return await eventModel.findOne({ where: criteria })
+    const event = await eventModel.findOne({ where: criteria });
+
+    if(!event) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    return event
 };
 
 /**

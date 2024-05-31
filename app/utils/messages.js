@@ -209,6 +209,9 @@ module.exports = {
     USER_REMOVED_SUCCESSFULLY: 'User removed successfully',
     NOTIFICATION_SENT_SUCCESSFULLY: 'Notification sent successfully',
     USER_ALREADY_EXISTS: 'User already exists with this ABN number',
-    USER_NOT_FOUND : 'User not found'
+    USER_NOT_FOUND : 'User not found',
+
+    //GLOBAL
+    NOT_FOUND:'Not found'
 
 };

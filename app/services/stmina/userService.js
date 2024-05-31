@@ -9,6 +9,7 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
+const CONSTANTS = require('../../utils/constants');
 
 
 /**
@@ -38,7 +39,10 @@ userService.createUser = async (payload) => {
  * @returns 
  */
 userService.getUser = async (criteria) => {
-    return await userModel.findOne({ where: criteria })
+    const user = await userModel.findOne({ where: criteria })
+
+    if(!user) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    return user
 };
 
 /**
