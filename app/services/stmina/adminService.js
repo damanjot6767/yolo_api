@@ -9,7 +9,6 @@ const { userModel, roleModel } = require('../../models');
 const { USER_STATUS, USER_ROLES, DAY_TIMES, FILTER_TYPES, TIME_FILTERS, DEVICE_TYPES } = require('../../utils/constants');
 const { Sequelize, Op, QueryTypes } = require('sequelize');
 const { makeHttpRequest, initializeMongoConnection } = require('../../utils/utils');
-const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 
 
 let adminService = {};
@@ -24,10 +23,7 @@ adminService.getUser = async (criteria, attributes = false, withoutJoin = false,
         ...(attributes && { attributes }),//+ include: 'createdUserData',
         raw
     };
-    const user = await MODELS.userModel.findOne(query);
-
-    if(!user) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-    return user
+    return await MODELS.userModel.findOne(query);
 };
 
 adminService.getUsers = async (payload) => {

@@ -29,6 +29,9 @@ pageController.createPage = async (payload) => {
 
 pageController.getPage = async (payload) => {
     const page = await pageService.getPage({ id: payload.id });
+
+    if(!page) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

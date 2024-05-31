@@ -6,7 +6,6 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
-const CONSTANTS = require('../../utils/constants');
 
 let homeService = {};
 
@@ -30,9 +29,7 @@ homeService.createHome = async (payload) => {
  * @returns 
  */
 homeService.getHome = async (criteria) => {
-    const home = await homeModel.findOne({ where: criteria });
-    if(!home) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-    return home
+    return await homeModel.findOne({ where: criteria });
 };
 
 /**

@@ -6,7 +6,6 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
-const CONSTANTS = require('../../utils/constants');
 
 let categoryService = {};
 
@@ -30,10 +29,7 @@ categoryService.createCategory = async (payload) => {
  * @returns 
  */
 categoryService.getCategory = async (criteria) => {
-    const category = await categoryModel.findOne({ where: criteria })
-
-    if(!category) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-    return category
+    return await categoryModel.findOne({ where: criteria })
 };
 
 /**

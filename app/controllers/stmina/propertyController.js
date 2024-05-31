@@ -29,6 +29,9 @@ propertyController.createProperty = async (payload) => {
 
 propertyController.getProperty = async (payload) => {
     const property = await propertyService.getProperty({ id: payload.id });
+
+    if(!property) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

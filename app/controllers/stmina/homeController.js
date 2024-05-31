@@ -29,6 +29,9 @@ homeController.createHome = async (payload) => {
 
 homeController.getHome = async (payload) => {
     const home = await homeService.getHome({ id: payload.id });
+
+    if(!home) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

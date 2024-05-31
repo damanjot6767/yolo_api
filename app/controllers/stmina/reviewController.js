@@ -29,6 +29,9 @@ reviewController.createReview = async (payload) => {
 
 reviewController.getReview = async (payload) => {
     const review = await reviewService.getReview({ id: payload.id });
+
+    if(!review) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

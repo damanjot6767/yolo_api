@@ -29,6 +29,9 @@ servicesController.createService = async (payload) => {
 
 servicesController.getService = async (payload) => {
     const Service = await servicesService.getService({ id: payload.id });
+
+    if(!Service) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

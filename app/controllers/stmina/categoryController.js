@@ -29,6 +29,8 @@ categoryController.createCategory = async (payload) => {
 
 categoryController.getCategory = async (payload) => {
     const category = await categoryService.getCategory({ id: payload.id });
+
+    if(!category) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

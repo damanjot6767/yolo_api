@@ -29,6 +29,9 @@ roomController.createRoom = async (payload) => {
 
 roomController.getRoom = async (payload) => {
     const room = await roomService.getRoom({ id: payload.id });
+
+    if(!room) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

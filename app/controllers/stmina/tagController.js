@@ -29,6 +29,9 @@ tagController.createTag = async (payload) => {
 
 tagController.getTag = async (payload) => {
     const tag = await tagService.getTag({ id: payload.id });
+
+    if(!tag) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

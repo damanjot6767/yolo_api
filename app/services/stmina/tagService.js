@@ -6,7 +6,6 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
-const CONSTANTS = require('../../utils/constants');
 
 let tagService = {};
 
@@ -30,10 +29,7 @@ tagService.createTag = async (payload) => {
  * @returns 
  */
 tagService.getTag = async (criteria) => {
-    const tag = await tagModel.findOne({ where: criteria })
-
-    if(!tag) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-    return tag
+    return await tagModel.findOne({ where: criteria })
 };
 
 /**

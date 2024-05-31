@@ -72,6 +72,9 @@ userController.createUser = async (payload) => {
 
 userController.getUser = async (payload) => {
     const user = await userService.getUser({ id: payload.id });
+
+    if(!user) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

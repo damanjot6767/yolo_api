@@ -29,6 +29,8 @@ eventController.createEvent = async (payload) => {
 
 eventController.getEvent = async (payload) => {
     const event = await eventService.getEvent({ id: payload.id });
+
+    if(!event) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

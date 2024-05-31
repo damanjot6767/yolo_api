@@ -6,7 +6,6 @@ const { TYPE, PACKAGE_TYPE, MESSAGES } = require('../../utils/constants');
 const _ = require("lodash");
 const { createErrorResponse } = require('../../helpers/stmina/common/resHelper');
 const commonFunctions = require('../../utils/utils');
-const CONSTANTS = require('../../utils/constants');
 
 let roomReviewService = {};
 
@@ -30,7 +29,7 @@ roomReviewService.createRoomReview = async (payload) => {
  * @returns 
  */
 roomReviewService.getRoomReview = async (criteria) => {
-    const roomReview = await roomReviewModel.findOne({ 
+    return await roomReviewModel.findOne({ 
         where: criteria, 
         include: [
             {
@@ -42,9 +41,6 @@ roomReviewService.getRoomReview = async (criteria) => {
                 as: 'room'
             }
         ]})
-    
-    if(!roomReview) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-    return roomReview
 };
 
 /**

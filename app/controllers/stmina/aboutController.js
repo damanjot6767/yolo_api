@@ -29,6 +29,8 @@ aboutController.createAbout = async (payload) => {
 
 aboutController.getAbout = async (payload) => {
     const about = await aboutService.getAbout({ id: payload.id });
+    if(!about) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
