@@ -11,6 +11,7 @@ module.exports = function (connection) {
         },
         title: {
             type: Sequelize.DataTypes.STRING,
+            unique: true,
             allowNull: false,
         },
         description: {
