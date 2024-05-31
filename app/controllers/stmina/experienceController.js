@@ -21,8 +21,6 @@ let experienceController = {};
 experienceController.createExperience = async (payload) => {
     const experience = await experienceService.createExperience(payload);
 
-    if(!experience) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
@@ -31,6 +29,9 @@ experienceController.createExperience = async (payload) => {
 
 experienceController.getExperience = async (payload) => {
     const experience = await experienceService.getExperience({ id: payload.id });
+
+    if(!experience) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

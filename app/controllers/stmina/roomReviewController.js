@@ -21,8 +21,6 @@ let roomReviewController = {};
 roomReviewController.createRoomReview = async (payload) => {
     const roomReview = await roomReviewService.createRoomReview(payload);
 
-    if(!roomReview) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
-
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
@@ -31,6 +29,9 @@ roomReviewController.createRoomReview = async (payload) => {
 
 roomReviewController.getRoomReview = async (payload) => {
     const roomReview = await roomReviewService.getRoomReview({ id: payload.id });
+
+    if(!roomReview) return createErrorResponse(CONSTANTS.MESSAGES.NOT_FOUND, CONSTANTS.ERROR_TYPES.DATA_NOT_FOUND);
+    
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
