@@ -7,6 +7,7 @@ let v1Routes = [
     ...require('./fileUploadRoutes'),
     ...require('./adminRoutes'),
     ...require('./sentMailRoutes'),
+    ...require('./pageRoutes'),
     ...require('./homeRoutes'),
     ...require('./userRoutes'),
     ...require('./aboutRoutes'),

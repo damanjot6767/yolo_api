@@ -6,6 +6,7 @@ const MODELS = require('../startup/db').models;
  ********* independently ********
  ********************************/
 let models = {
+    pageModel: MODELS.pages,
     homeModel: MODELS.homes,
     userModel: MODELS.users,
     aboutModel: MODELS.abouts,

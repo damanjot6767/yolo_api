@@ -9,6 +9,7 @@ module.exports = {
     adminService: require('./stmina/adminService'),
     userService: require('./stmina/userService'),
     homeService: require('./stmina/homeService'),
+    pageService: require('./stmina/pageService'),
     aboutService: require('./stmina/aboutService'),
     experienceService: require('./stmina/experienceService'),
     servicesService: require('./stmina/servicesService'),
