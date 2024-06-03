@@ -12,7 +12,10 @@ const swaggerUI = require('swagger-ui-express'),
 	HELPERS = require('../helpers'),
 	utils = require('./utils'),
 	multer = require('multer'),
-	uploadMiddleware = multer();
+	uploadMiddleware = multer({
+		limits: {
+		  fileSize: 20 * 1024 * 1024 // 20MB in bytes
+		}});
 
 let routeUtils = {};
 
