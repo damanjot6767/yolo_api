@@ -30,6 +30,7 @@ pageService.createPage = async (payload) => {
  */
 pageService.getPage = async (criteria) => {
     const page = await pageModel.findOne({ where: criteria })
+    return page
 };
 
 /**
